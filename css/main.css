@@ -1,24 +1,14 @@
-/*.body {
-    font-size: 30px;
-}
-*/
-/*.container {
-    background: #e34768;
+.body {
+    font-size: 14px;
 }
 
-.row {
-    background: #e3de4d;
+.container {
+    margin-top: 10px;
 }
 
-
-.row div:nth-child(odd) {
-    background: #4e45c6;
+.col-12 {
+margin-top: 20px;
 }
-
-.row div:nth-child(even) {
-    background: #51c645;
-}*/
-
-img {
-    width: 300px;
+.carousel-indicators li:hover {
+cursor: pointer;
 }
