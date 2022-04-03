@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>To Do</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"  href="styles/style.css">
 </head>
 <body>
 <div class="container">
@@ -31,44 +32,46 @@
             </div>
         </div>
     </div>
-    <div class="mt-2 d-grid gap-2 d-md-flex justify-content-md-end">
-        <button onclick="buttonAddNote()" class="btn btn-light btn-sm border" type="button">Create Note</button>
-    </div>
 </div>
 <div class="container">
-    <form class="needs-validation" novalidate>
+    <form id="formData" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="exampleFormControlName" class="form-label">Name</label>
-            <input required type="text" class="form-control" id="exampleFormControlName" placeholder="name">
+            <input required name="name" type="text" class="form-control" id="exampleFormControlName" placeholder="name">
             <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please write the name.</div>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlSelect" class="form-label">Category</label>
-            <select class="form-select" aria-label="Default select example" id="exampleFormControlSelect" required>
+            <select name="category" class="form-select" aria-label="Default select example" id="exampleFormControlSelect" required>
                 <option value="" selected disabled hidden>Select a category</option>
-                <option value="1">Task</option>
-                <option value="2">Idea</option>
-                <option value="3">Quote</option>
-                <option value="4">Random Thought</option>
+                <option value="Task">Task</option>
+                <option value="Idea">Idea</option>
+                <option value="Quote">Quote</option>
+                <option value="Random Thought">Random Thought</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please choose a category.</div>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-            <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea" class="form-label">Content</label>
+            <textarea name="text" required class="form-control" id="exampleFormControlTextarea" rows="3"></textarea>
             <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please write the text.</div>
         </div>
         <div class="mb-3 col-2">
-            <label for="formDate" class="form-label">Date</label>
-            <input class="form-control" type="date" id="formDate">
+            <label for="exampleFormControlDate" class="form-label">Date</label>
+            <input name="date" class="form-control" type="date" id="exampleFormControlDate">
         </div>
         <div class="d-grid gap-2">
-            <button class="btn btn-light border" type="submit">Save The Note</button>
+            <button class="btn btn-light border" id="addNoteButton" type="submit">Save The Note</button>
         </div>
     </form>
+</div>
+<div class="container">
+    <div class="mt-2 d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-light btn-sm border buttonAddNote" type="button">Create Note</button>
+    </div>
 </div>
 
 
