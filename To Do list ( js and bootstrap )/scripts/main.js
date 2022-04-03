@@ -1,0 +1,4 @@
+const buttonAddNote = () => {
+    alert('hello')
+}
+
