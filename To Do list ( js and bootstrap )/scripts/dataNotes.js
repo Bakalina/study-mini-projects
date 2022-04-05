@@ -7,7 +7,8 @@ let dataNotes = [
         name: 'write',
         select: "Idea",
         selectImage: "img/idea.png",
-        text: "write a favorite book"
+        text: "write a favorite book",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -16,7 +17,8 @@ let dataNotes = [
         name: "shopping",
         select: "Task",
         selectImage: "img/task.png",
-        text: "foods"
+        text: "foods",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -25,7 +27,8 @@ let dataNotes = [
         name: "jogging",
         select: "Idea",
         selectImage: "img/idea.png",
-        text: "Start running in the morning"
+        text: "Start running in the morning",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -34,7 +37,8 @@ let dataNotes = [
         name: "buy a laptop",
         select: "Task",
         selectImage: "img/task.png",
-        text: "go shopping"
+        text: "go shopping",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -43,7 +47,8 @@ let dataNotes = [
         name: "book",
         select: "Quote",
         selectImage: "img/quote.png",
-        text: "Sleep is good, he said, and books are better."
+        text: "Sleep is good, he said, and books are better.",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -52,7 +57,8 @@ let dataNotes = [
         name: "food",
         select: "Random Thought",
         selectImage: "img/random.png",
-        text: "I want to eat"
+        text: "I want to eat",
+        active: true
     },
     {
         createDate: "2022-04-04",
@@ -61,6 +67,7 @@ let dataNotes = [
         name: "sleep",
         select: "Random Thought",
         selectImage: "img/random.png",
-        text: "i need to more sleep :)"
+        text: "i need to more sleep :)",
+        active: true
     }
 ];

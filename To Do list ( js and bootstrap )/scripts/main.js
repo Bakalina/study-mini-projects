@@ -1,11 +1,19 @@
+let renderCondition = true
 
-renderRowActiveNotes(dataNotes)
+renderHeader()
+renderNotes(renderCondition)
+
+function renderNotes (condition) {
+    renderCondition = condition
+    head(condition)
+    let notes = dataNotes.filter(el => el.active === condition)
+    renderNote(notes)
+}
 
 function clearHtml(selector) {
     let elementsNotes = document.querySelectorAll(selector)
     elementsNotes.forEach(el => el.remove())
 }
-
 
 function addNotes(id) {
     let date = document.getElementById('exampleFormControlDate').value
@@ -38,7 +46,8 @@ function addNotes(id) {
                 selectImage: selectImage,
                 text: text,
                 date: date,
-                createDate: createDate.toISOString().split('T')[0]
+                createDate: createDate.toISOString().split('T')[0],
+                active: true
             }
             dataNotes.push(note)
         } else {
@@ -53,7 +62,7 @@ function addNotes(id) {
             })
         }
         clearHtml('.formAddNote')
-        renderRowActiveNotes(dataNotes)
+        renderNotes(renderCondition)
     }
 }
 
@@ -68,7 +77,7 @@ function slicedText(text) {
 function deleteNote(id) {
     clearHtml('.activeNote')
     dataNotes = dataNotes.filter(el => el.id !== id)
-    renderRowActiveNotes(dataNotes)
+    renderNotes(renderCondition)
 }
 
 function changeNote(id) {
@@ -79,4 +88,15 @@ function changeNote(id) {
     })
 }
 
+function changeActive(id) {
+   dataNotes = dataNotes.map(el => {
+        if (el.id === id) {
+            for (let key in el) {
+               if(el[key] === el.active) el[key] === true? el[key] = false : el[key] = true
+            }
+        }
+        return el
+    })
+    renderNotes(renderCondition)
+}
 

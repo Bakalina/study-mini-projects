@@ -2,7 +2,9 @@
 let containerButtonAddNote = document.createElement('div')
 containerButtonAddNote.className = 'container'
 containerButtonAddNote.innerHTML = `<div class="mt-2 d-grid gap-2 d-md-flex justify-content-md-end">
-        <button onclick="formAddNote()" class="btn btn-light btn-sm border" type="button">Create Note</button>
+        <div onclick="renderNotes(true)" class="btn btn-light btn-sm border">Active Note</div>
+        <div onclick="renderNotes(false)" class="btn btn-light btn-sm border">Archive Note</div>
+        <div onclick="formAddNote()" class="btn btn-light btn-sm border">Create Note</div>
     </div>`
 document.querySelector('.elementsNotes').after(containerButtonAddNote)
 
@@ -52,7 +54,7 @@ function formAddNote(name='', select='', text='', date='', id=null) {
     validationFormBootstrap()
 }
 
-function renderRowActiveNotes(arrData) {
+function renderNote(arrData) {
     clearHtml('.activeNote')
     arrData.forEach(el => {
         let divRow = document.createElement('div')
@@ -68,7 +70,8 @@ function renderRowActiveNotes(arrData) {
                    <div class="row justify-content-center ">
                         <div style="cursor: pointer" onclick="changeNote(${el.id})" class="col-4 p-0">
                              <img alt="img" src="img/edit.png"></div>
-                        <div style="cursor: pointer" class="col-4 p-0"><img alt="img" src="img/archive.png"></div>
+                        <div style="cursor: pointer" onclick="changeActive(${el.id})" class="col-4 p-0">
+                             <img alt="img" src="img/archive.png"></div>
                         <div style="cursor: pointer" onclick="deleteNote(${el.id})" class="col-4 p-0">
                              <img alt="img" src="img/basket.png"></div>
                    </div>
@@ -77,3 +80,44 @@ function renderRowActiveNotes(arrData) {
     })
 }
 
+function renderHeader() {
+    let divContainer = document.createElement('div')
+    divContainer.className = 'container'
+    divContainer.innerHTML = `<div class="row align-items-center bg-secondary 
+                  fw-bold text-white mt-2 rounded-3 form-control-sm">
+            <div class="col-3 text-center">
+                Name
+            </div>
+            <div class="col-2">
+                Created
+            </div>
+            <div class="col-2">
+                Category
+            </div>
+            <div class="col-2">
+                Content
+            </div>
+            <div class="col-2">
+                Dates
+            </div>
+            <div class="col-1">
+                <div class="row justify-content-center">
+                    <div class="col-4 p-0"></div>
+                    <div class="col-4 p-0"><img alt="img" src="img/archive.png"></div>
+                    <div class="col-4 p-0"><img alt="img" src="img/basket.png"></div>
+                </div>
+            </div>
+        </div>`
+
+    document.body.prepend(divContainer)
+}
+
+function head(condition) {
+    clearHtml('.headerText')
+    let divContainer = document.createElement('div')
+    divContainer.className = 'container text-center headerText'
+    let text = condition? 'Active': 'Archive'
+    divContainer.innerHTML = `<h2>${text}</h2>`
+
+    document.body.prepend(divContainer)
+}
