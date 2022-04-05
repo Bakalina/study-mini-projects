@@ -2,8 +2,8 @@
 let containerButtonAddNote = document.createElement('div')
 containerButtonAddNote.className = 'container'
 containerButtonAddNote.innerHTML = `<div class="mt-2 d-grid gap-2 d-md-flex justify-content-md-end">
-        <div onclick="renderNotes(true)" class="btn btn-light btn-sm border">Active Note</div>
-        <div onclick="renderNotes(false)" class="btn btn-light btn-sm border">Archive Note</div>
+        <div onclick="renderNotes(true)" class="btn btn-light btn-sm border">Active Notes</div>
+        <div onclick="renderNotes(false)" class="btn btn-light btn-sm border">Archive Notes</div>
         <div onclick="formAddNote()" class="btn btn-light btn-sm border">Create Note</div>
     </div>`
 document.querySelector('.elementsNotes').after(containerButtonAddNote)
@@ -116,8 +116,46 @@ function head(condition) {
     clearHtml('.headerText')
     let divContainer = document.createElement('div')
     divContainer.className = 'container text-center headerText'
-    let text = condition? 'Active': 'Archive'
+    let text = condition? 'Active notes': 'Archive notes'
     divContainer.innerHTML = `<h2>${text}</h2>`
 
     document.body.prepend(divContainer)
+}
+
+function statisticCategoryNotes() {
+    clearHtml('.statistic')
+    let divContainer = document.createElement('div')
+    divContainer.className = 'container statistic'
+
+    divContainer.innerHTML = `<div class="row align-items-center bg-secondary 
+                  fw-bold text-white mt-2 rounded-3 form-control-sm">
+            <div class="col-2"></div>
+            <div class="col-4">
+                Note category
+            </div>
+            <div class="col-3">
+                Active
+            </div>
+            <div class="col-3">
+                Archived
+            </div>
+        </div>`
+
+    document.body.append(divContainer)
+}
+
+function statisticCategoryList(statisticData) {
+    statisticData.forEach(el => {
+        if (el.active > 0 || el.archive > 0) {
+            let divRow = document.createElement('div')
+            divRow.className = 'row activeNote align-items-center bg-light mt-2 rounded-3 form-control-sm'
+            divRow.innerHTML = `<div class="col-2">
+              <img alt="icon" style="max-width: 30px" src="${el.selectImage}"/></div>
+              <div class="col-4 fw-bold">${slicedText(el.select)}</div>
+              <div class="col-3">${el.active}</div>
+              <div class="col-3">${el.archive}</div>`
+
+            document.querySelector('.statistic').appendChild(divRow)
+        }
+    })
 }

@@ -1,13 +1,16 @@
 let renderCondition = true
 
 renderHeader()
+statisticCategoryNotes()
 renderNotes(renderCondition)
+
 
 function renderNotes (condition) {
     renderCondition = condition
     head(condition)
     let notes = dataNotes.filter(el => el.active === condition)
     renderNote(notes)
+    statisticNotes(dataNotes)
 }
 
 function clearHtml(selector) {
@@ -98,5 +101,42 @@ function changeActive(id) {
         return el
     })
     renderNotes(renderCondition)
+}
+
+function statisticNotes(notes) {
+    let statisticData = [
+        {
+            select: "Task",
+            selectImage: "img/task.png",
+            active: 0,
+            archive: 0
+        },
+        {
+            select: "Idea",
+            selectImage: "img/idea.png",
+            active: 0,
+            archive: 0
+        },
+        {
+            select: "Quote",
+            selectImage: "img/quote.png",
+            active: 0,
+            archive: 0
+        },
+        {
+            select: "Random Thought",
+            selectImage: "img/random.png",
+            active: 0,
+            archive: 0
+        }
+    ]
+    notes.forEach(not => {
+        statisticData.forEach(st => {
+            if (not.select === st.select) {
+                not.active? st.active += 1: st.archive += 1
+            }
+        })
+    })
+    statisticCategoryList(statisticData)
 }
 
